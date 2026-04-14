@@ -3,87 +3,98 @@
 [![Version](https://img.shields.io/github/v/release/s4production/adbot)](https://github.com/s4production/adbot/releases/latest)
 [![License](https://img.shields.io/badge/license-Commercial-blue)](LICENSE.md)
 
-**AdBot** to profesjonalny bot automatyzujący oglądanie reklam w kole losu w grze mobilnej Shakes & Fidget. Bot działa na emulatorach Android (LDPlayer) i fizycznych telefonach podłączonych przez ADB.
+**AdBot** is a professional automation tool for watching fortune wheel ads in the mobile game Shakes & Fidget. It works with Android emulators (LDPlayer recommended) and physical phones connected via ADB.
 
-## Co robi AdBot?
+## What does AdBot do?
 
-Bot wykonuje pełen cykl oglądania reklamy w kole losu:
+The bot performs a complete ad cycle in the fortune wheel:
 
-1. **Wykrywa TV** w lewym-górnym rogu koła losu (template matching)
-2. **Tapuje TV** → rozpoczyna sekwencję reklamową (3 reklamy pod rząd)
-3. **Zamyka każdą reklamę** automatycznie wykrywając przycisk close (X, strzałki, skip)
-4. **Po reklamach klika OK** na overlay'u z nagrodą
-5. **Powtarza cykl** — setki reklam w ciągu dnia, bez twojej interwencji
+1. **Detects the TV icon** in the top-left corner of the wheel (template matching)
+2. **Taps the TV** → starts the ad sequence (3 consecutive ads)
+3. **Closes each ad** automatically — finds the close button (X, arrows, skip)
+4. **Clicks OK** on the reward overlay after ads
+5. **Repeats the cycle** — hundreds of ads per day, completely hands-free
 
-## Kluczowe features v12.13
+## Key features v12.14
 
-### Detekcja close button — 3-warstwowa
-- **UI dump** (uiautomator) — szuka przycisków z keywordami w 5 językach (EN/PL/DE/FR/ES)
-- **Template matching** — 13 templatów X/strzałek + syntetyczne X w 3 rozmiarach, multi-scale, 5 pass z blur/CLAHE
-- **OCR** (Tesseract) — rozpoznaje teksty "skip", "close", "dismiss" na reklamach WebView
+### 3-layer close button detection
+- **UI dump** (uiautomator) — searches for close/skip/dismiss keywords across 5 languages (EN/PL/DE/FR/ES)
+- **Template matching** — 13 external X/arrow templates + synthetic X in 3 sizes, multi-scale, 5-pass with blur/CLAHE/equalizeHist
+- **OCR** (Tesseract) — recognizes "skip"/"close"/"dismiss" text on WebView ads
 
-### Obsługa wszystkich głównych SDK reklamowych
-- IronSource (ControllerActivity, playable ads, endcards)
+### Full coverage of major ad SDKs
+- IronSource (ControllerActivity, playable ads, install endcards)
 - Google AdMob (AdActivity, TikTok/Google Play interstitials)
 - Unity Ads (FullScreenWebViewDisplay)
 - AppLovin, Vungle, AdColony, Chartboost, InMobi, MoPub
-- **Fyber Inneractive** (z obsługą pułapek IACloseButton)
+- **Fyber Inneractive** (with IACloseButton trap handling)
 - Pangle, Facebook Ads, StartApp, DigitalTurbine, Tapjoy, Kidoz
 
-### Anti-trap recovery (z realnych testów 60+ cykli)
-- **Poison filter** — pozycje które otworzyły Google Play / Chrome zostają zablokowane na resztę cyklu
-- **NO-TAP-ZONE** — bot nigdy nie tapnie dolnych 8% ekranu (ochrona przed wyjściem z koła losu)
-- **Deceptive browser detection** — InternalBrowserActivity (Inneractive pułapka) → natychmiastowy BACK
-- **Force-bring-to-foreground** — gdy Chrome ignoruje BACK, bot używa `monkey LAUNCHER` żeby wrócić do gry
-- **Cascading recovery** — 8s BACK → 15s 3xBACK → 25s 6xBACK → 35s kill WebView → 45s engine recover
+### Anti-trap recovery (battle-tested on 60+ cycle autonomous runs)
+- **Poison filter** — positions that opened Google Play / Chrome are blacklisted for the rest of the cycle
+- **NO-TAP-ZONE** — bot will NEVER tap the bottom 8% of the screen (protects fortune wheel navbar)
+- **Deceptive browser detection** — InneractiveInternalBrowserActivity (install trap) → instant BACK
+- **Force-bring-to-foreground** — when Chrome ignores BACK keyevent, bot uses `monkey LAUNCHER` to return to the game
+- **Race-safe BACK** (v12.14) — focus checked BEFORE every BACK; bot never accidentally exits the wheel during long ads
+- **Cascading recovery** — 8s single BACK → 15s triple BACK → 25s rapid 6× BACK → 35s kill WebView → 45s engine recover
 
-### Auto-navigation (pierwszy uruchom)
-- Charselect screen → wybór postaci → miasto → koło losu (template matching kolo.png)
-- Po pierwszym cyklu bot zostaje na kole losu (zero zbędnych tapów)
+### Smart reward overlay handling
+- Template matching (`ok_template.png`) with 11 scales + CLAHE normalization
+- Fallback yellow-button detection (HSV color mask)
+- **Never presses BACK on Unity focus** (Sacred Loop Rule — BACK on the wheel would exit to the city)
 
-### OK reward overlay
-- Template matching (`ok_template.png`) z 11 skalami + CLAHE
-- Fallback yellow-button detection (HSV mask)
-- **Nigdy BACK** na Unity focus (Sacred Loop Rule — BACK wyszedłby z koła)
+### Auto-update via GitHub Releases
+Every new release published to https://github.com/s4production/adbot/releases is automatically detected by the bot on startup. Users get a clean update dialog — one click to download and relaunch.
 
-## Szybki start
+## Quick start
 
-### Wymagania
-- Windows 10/11
-- LDPlayer 9 (zalecany) lub inny emulator z ADB
-- Gra Shakes & Fidget zainstalowana w emulatorze
-- Licencja AdBot (kup na Discord — patrz `SUPPORT.md`)
+### Requirements
+- Windows 10/11 (64-bit)
+- LDPlayer 9 (recommended) or any emulator with ADB
+- Shakes & Fidget installed in the emulator
+- AdBot license (purchase on Discord — see [`SUPPORT.md`](SUPPORT.md))
 
-### Instalacja
-1. Pobierz najnowszy EXE z [Releases](https://github.com/s4production/adbot/releases/latest)
-2. Uruchom `AdBot_v12.13.exe` (nie wymaga instalacji)
-3. Wprowadź licencję
-4. Włącz emulator, uruchom grę, przejdź do koła losu
-5. Kliknij **Start** w bocie
+### Installation
+1. Download the latest EXE from [Releases](https://github.com/s4production/adbot/releases/latest)
+2. Run `AdBot_v12.14.exe` (no installation required)
+3. Enter your license key
+4. Start the emulator, launch the game, navigate to the fortune wheel
+5. Click **Start** in the bot
 
-Szczegóły: [`INSTALLATION.md`](INSTALLATION.md)
+Detailed setup: [`INSTALLATION.md`](INSTALLATION.md)
 
-## Dokumentacja
+## Documentation
 
-| Plik | Zawartość |
+| File | Contents |
 |---|---|
-| [`INSTALLATION.md`](INSTALLATION.md) | Instalacja LDPlayer, konfiguracja ADB, pierwszy uruchom |
-| [`CHANGELOG.md`](CHANGELOG.md) | Historia wersji i naprawionych bugów |
-| [`SUPPORT.md`](SUPPORT.md) | Kontakt, FAQ, Discord, zgłaszanie błędów |
-| [`LICENSE.md`](LICENSE.md) | Warunki licencji (EULA) |
+| [`INSTALLATION.md`](INSTALLATION.md) | LDPlayer setup, ADB configuration, first run |
+| [`CHANGELOG.md`](CHANGELOG.md) | Full version history and bug fixes |
+| [`SUPPORT.md`](SUPPORT.md) | Discord, FAQ, bug reporting |
+| [`LICENSE.md`](LICENSE.md) | End-User License Agreement (EULA) |
 
-## Wsparcie
+## Support
 
 - **Discord:** https://discord.gg/gn6DFnYF93
 - **Issues:** [github.com/s4production/adbot/issues](https://github.com/s4production/adbot/issues)
 
-## Status projektu
+## Project status
 
-- ✅ Aktywnie rozwijany
-- ✅ Auto-update wbudowany (bot sam sprawdza czy jest nowa wersja)
-- ✅ Produkcja od 2022 roku (wcześniejsze wersje pod marką "SimpleBot Pro")
-- 🛡️ Ochrona antypiracka: HMAC license files, signed binaries, self-check
+- ✅ Actively maintained
+- ✅ Auto-update built-in (bot checks GitHub Releases on startup)
+- ✅ In production since 2022 (earlier versions under "SimpleBot Pro" branding)
+- 🛡️ Anti-piracy protection: HMAC license files, signed binaries, self-check
+
+## Privacy
+
+AdBot sends minimal data:
+- **Hardware ID** — for license validation (sent to license server)
+- **IP address** — visible to GitHub when checking for updates (normal HTTP)
+
+AdBot does **NOT** send:
+- Game credentials or passwords
+- Screen contents or game data
+- Any personal information beyond hardware ID
 
 ---
 
-© 2022-2026 s4production. Wszystkie prawa zastrzeżone. Shakes & Fidget jest znakiem towarowym Playa Games — AdBot nie jest oficjalnie powiązany z twórcami gry.
+© 2022-2026 s4production. All rights reserved. Shakes & Fidget is a trademark of Playa Games — AdBot is an independent project and is **NOT** officially affiliated with the game developers.

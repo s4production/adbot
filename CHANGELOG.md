@@ -4,6 +4,38 @@ Pełna historia wersji AdBota z opisem naprawionych bugów i dodanych funkcji. N
 
 ---
 
+## v12.14 (2026-04-14) — RACE-SAFE BACK (wheel exit fix)
+
+### 🐛 Fix: Bot wychodził z koła na długich reklamach
+
+**Problem:** Na długich reklamach bot wchodził w cascading recovery (po 8s/15s/25s z zacięcia). Recovery odpalało 1×/3×/6× BACK w pętli. Jeśli reklama **naturalnie kończyła się podczas tej pętli BACK**, jeden z BACK-ów trafiał w **Unity (wheel)** zamiast w reklamę → wyjście z koła do miasta.
+
+Race condition:
+```
+1. Ad stuck 15s → cascade fires level 2 (3x BACK)
+2. BACK #1 → ad closes naturally (Unity focus)
+3. BACK #2 → lands on Unity wheel → EXIT to city!
+```
+
+**Fix:** Wszystkie BACK-e sprawdzają focus **PRZED** wysłaniem (nie po):
+
+```python
+# STARE (bug):                   # NOWE (fix):
+adb.back()                       # if "UnityPlayerActivity" in focus:
+time.sleep(gap)                  #     return  # ad ended, SKIP BACK
+if unity: return  # za późno     # adb.back()
+```
+
+Zastosowane w 4 miejscach:
+- `_ad_recovery_cascade` — cascade levels 1/2/3
+- `_back_from_foreign` — recovery z Google Play/Chrome
+- `close_ad_v15` timeout path — 4× BACK fallback
+- Deceptive browser second BACK
+
+Bot nigdy już nie BACK-nie na Unity. Długie reklamy działają bez wyjścia z koła.
+
+---
+
 ## v12.13 (2026-04-14) — CATEGORICAL TAP BAN + GITHUB RELEASES
 
 ### 🛡️ Fix: Kategoryczny zakaz tapów gdy TV nie jest widoczne
