@@ -4,6 +4,20 @@ Pełna historia wersji AdBota z opisem naprawionych bugów i dodanych funkcji. N
 
 ---
 
+## v12.15 (2026-04-14) — DISCORD LINK UNIFICATION
+
+### 🐛 Fix: Niespójne linki Discord w bocie
+
+**Problem:** Bot miał DWA różne linki Discord zapisane w różnych plikach:
+- `simplebot_pro/gui/discord_banner.py` → `gn6DFnYF93` ✅ (aktualny)
+- `simplebot_pro/gui/startup_guide.py` → `c7EqMUU5` ❌ (stary/zły)
+
+Startup guide pokazywany przy każdym uruchomieniu miał **nieaktywny** link — klienci klikali w niego i trafiali do zepsutego serwera zamiast do właściwego supportu.
+
+**Fix:** Zunifikowano wszystko do `https://discord.com/invite/gn6DFnYF93` — aktywny serwer support z ticketami i pomocą.
+
+---
+
 ## v12.14 (2026-04-14) — RACE-SAFE BACK (wheel exit fix)
 
 ### 🐛 Fix: Bot wychodził z koła na długich reklamach
