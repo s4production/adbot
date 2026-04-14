@@ -1,0 +1,89 @@
+# v12.13 CATEGORICAL BAN — nothing source-code-related ever gets committed.
+# This file is defense-in-depth. Every commit is also visually reviewed.
+
+# Python source — complete block
+*.py
+*.pyc
+*.pyo
+*.pyd
+*.pyx
+__pycache__/
+*.egg-info/
+
+# Bot-specific source modules
+simplebot_pro/
+bootstrap_v10_1.py
+simple_bot.py
+simplebot_pro_main.py
+smart_closer.py
+collect_ad_data.py
+
+# Build artifacts
+build/
+dist/
+*.spec
+*.manifest
+
+# Config and state
+*_config.json
+*_memory.json
+adbot_v10_1_*
+adbot_v11_*
+adbot_v12_*
+License_Generator*
+License_Operator*
+*.license
+*.lic
+
+# Crypto material
+*.pem
+*.key
+*.pub
+*.p12
+*.pfx
+
+# Templates (know-how)
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.ico
+# Exception: docs/ screenshots and branding are allowed
+!docs/**/*.png
+!docs/**/*.jpg
+!docs/**/*.jpeg
+
+# ADB + native libraries
+adb.exe
+*.dll
+*.exe
+# Exception: README images section
+!docs/**/*
+
+# Tesseract OCR
+tesseract/
+tessdata/
+
+# Claude / editor tracking
+.claude/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Bot debug data
+BOT\ DANE/
+BOT_DANE/
+debug_data/
+cycle_*/
+
+# OS junk
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Temp
+*.tmp
+*.temp
+*.bak
+*.log
