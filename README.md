@@ -15,7 +15,7 @@ The bot performs a complete rewarded-ad cycle, fully hands-free:
 4. **Clicks OK** on any reward overlay that appears
 5. **Repeats the cycle** — hundreds of ads per day, no manual interaction
 
-## Key features v12.14
+## Key features v12.16
 
 ### 3-layer close button detection
 - **UI dump** (uiautomator) — searches for close/skip/dismiss keywords across 5 languages (EN/PL/DE/FR/ES)
@@ -35,7 +35,7 @@ The bot performs a complete rewarded-ad cycle, fully hands-free:
 - **NO-TAP-ZONE** — bot will NEVER tap the bottom 8% of the screen (protects navigation bars)
 - **Deceptive browser detection** — InternalBrowserActivity (install trap) → instant BACK
 - **Force-bring-to-foreground** — when Chrome ignores BACK keyevent, bot uses `monkey LAUNCHER` to return to the game
-- **Race-safe BACK** (v12.14) — focus checked BEFORE every BACK; bot never accidentally exits the current screen during long ads
+- **Race-safe BACK** (v12.16) — focus checked BEFORE every BACK; bot never accidentally exits the current screen during long ads
 - **Cascading recovery** — 8s single BACK → 15s triple BACK → 25s rapid 6× BACK → 35s kill WebView → 45s engine recover
 
 ### Smart reward overlay handling
@@ -56,7 +56,7 @@ Every new release published to https://github.com/s4production/adbot/releases is
 
 ### Installation
 1. Download the latest EXE from [Releases](https://github.com/s4production/adbot/releases/latest)
-2. Run `AdBot_v12.14.exe` (no installation required)
+2. Run `AdBot_v12.16.exe` (no installation required)
 3. Enter your license key
 4. Start the emulator, launch the target game, navigate to the ad trigger screen
 5. Click **Start** in the bot

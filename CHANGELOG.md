@@ -4,9 +4,17 @@ Pełna historia wersji AdBota z opisem naprawionych bugów i dodanych funkcji. N
 
 ---
 
-## v12.16-BETA (2026-04-14) — TESTOWA, nie auto-update
+## v12.16 (2026-04-14) — STABLE (promoted from beta)
 
-⚠️ **Ta wersja jest oznaczona jako prerelease** — auto-updater klientów NIE poda jej jako dostępnej. Klienci zostają na v12.15 stable. Pobierz ręcznie ze strony releases jeśli chcesz przetestować.
+Wersja v12.16-beta została przetestowana i promowana do **STABLE**. Auto-updater klientów otrzyma ją automatycznie przy następnym uruchomieniu.
+
+### Zmiany w GUI
+- **Title bar**: "AdBot 12.16" (było "v12.2fixtest")
+- **Welcome screen**: "Mobile Game Ad Watcher" (było "Shakes & Fidget Ad Watcher")
+- **Splash screen**: "v12.16" (było "v11 · Shakes & Fidget")
+- **Startup guide**: "AdBot 12.16" (było "AdBot v11")
+- **Preview panel**: "Trusted by gamers since 2022"
+- Usunięte wszystkie wzmianki o konkretnej grze — bot jest teraz generycznym narzędziem do automatyzacji reklam
 
 ### 🐛 Fix: Bot klikał w navbar koła (bell/quest/Goblin Gleeman)
 
