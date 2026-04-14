@@ -64,7 +64,7 @@ Licencje są dostępne na Discord w kanale `#zakup`. Zapłać przez PayPal / BLI
 
 AdBot **automatyzuje** oglądanie reklam — robi to co ty robiłbyś ręcznie, tylko szybciej. Nie modyfikuje gry, nie czyta pamięci, nie exploituje żadnych luk.
 
-**JEDNAK:** Playa Games (twórcy Shakes & Fidget) mogą zmienić Terms of Service i zabronić botów. Używaj na własne ryzyko. Używanie wielu kont przez bota może skutkować banem.
+**JEDNAK:** Wydawcy gier mogą zabronić botów w swoich Terms of Service. Używaj na własne ryzyko. Używanie wielu kont przez bota może skutkować banem.
 
 ### Bot zawiesił się — co robić?
 
@@ -83,7 +83,7 @@ Nie. Bot tapuje ekran tak jak człowiek — losowe małe delaye, fizyczne taps p
 
 ### Czy bot jest bezpieczny dla mojego konta?
 
-Nie ma gwarancji. Playa Games może teoretycznie wykryć wzorce automatyzacji. Z doświadczenia ~4 lat produkcji: zero znanych banów wśród klientów.
+Nie ma gwarancji. Wydawcy gier mogą teoretycznie wykryć wzorce automatyzacji. Z doświadczenia ~4 lat produkcji: zero znanych banów wśród klientów.
 
 **Zalecenia:**
 - Nie uruchamiaj na głównym koncie (używaj altów)
@@ -113,7 +113,7 @@ adb shell dumpsys window windows | findstr mCurrentFocus
 
 Wynik np.:
 ```
-mCurrentFocus=Window{... com.playagames.shakesfidget/com.google.android.gms.ads.AdActivity}
+mCurrentFocus=Window{... com.example.yourgame/com.google.android.gms.ads.AdActivity}
 ```
 
 ### 4. UI dump

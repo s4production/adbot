@@ -35,7 +35,7 @@ Licencjobiorca **ZOBOWIĄZUJE SIĘ NIE**:
 Licencjobiorca może:
 
 - Uruchamiać Oprogramowanie na dozwolonych urządzeniach
-- Używać do automatyzacji oglądania reklam w grze Shakes & Fidget na własnych kontach w grze
+- Używać do automatyzacji oglądania reklam nagrodowych w grach mobilnych na własnych kontach
 - Otrzymywać aktualizacje w ramach aktywnej licencji
 
 Licencjobiorca **NIE MOŻE**:
@@ -48,12 +48,12 @@ Licencjobiorca **NIE MOŻE**:
 
 ### 4.1. Ban w grze
 
-Gra Shakes & Fidget (Playa Games) ma własne warunki użytkowania (Terms of Service). Używanie bota może być niezgodne z ToS gry.
+Każda gra ma własne warunki użytkowania (Terms of Service). Używanie bota może być niezgodne z ToS konkretnej gry.
 
 **Licencjobiorca korzysta z Oprogramowania na WŁASNE RYZYKO.** Autor nie odpowiada za:
-- Bany kont w grze
+- Bany kont w grach
 - Utratę postępu gry
-- Jakiekolwiek kary nałożone przez Playa Games
+- Jakiekolwiek kary nałożone przez wydawców gier
 
 ### 4.2. Brak gwarancji
 
@@ -91,7 +91,7 @@ Po wypowiedzeniu licencjobiorca musi **niezwłocznie usunąć Oprogramowanie** z
 
 Oprogramowanie i cała powiązana dokumentacja są własnością Autora chronioną prawem autorskim.
 
-Markaznak towarowy **"Shakes & Fidget"** należy do Playa Games. AdBot jest niezależnym projektem i **NIE JEST** oficjalnie powiązany z Playa Games.
+AdBot jest niezależnym narzędziem automatyzacji i **NIE JEST** oficjalnie powiązany z żadnym wydawcą gier. Wszystkie znaki towarowe gier pozostają własnością ich właścicieli.
 
 ## 9. Prywatność
 

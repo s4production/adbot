@@ -29,12 +29,12 @@ W LDPlayer Settings:
 - **Resolution**: 540x960 (lub 1080x1920) — bot działa na każdym
 - **Network → Device Mode**: `Phone`
 
-## Krok 3: Zainstaluj Shakes & Fidget
+## Krok 3: Zainstaluj docelową grę
 
 1. W LDPlayer otwórz Google Play
-2. Wyszukaj "Shakes and Fidget"
-3. Zainstaluj grę
-4. Zaloguj się na swoje konto
+2. Znajdź i zainstaluj grę mobilną z reklamami nagrodowymi
+3. Zaloguj się na swoje konto
+4. Przejdź do ekranu w którym pojawiają się reklamy nagrodowe
 
 ## Krok 4: Uruchom AdBota
 

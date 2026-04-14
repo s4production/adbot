@@ -114,12 +114,12 @@ Zweryfikowane na 3 zaciętych reklamach: Tasty endcard, Tasty Tops arrows, White
 **Test ręczny:**
 ```
 adb shell input keyevent BACK  → Chrome IGNORUJE (focus dalej Chrome)
-adb shell monkey -p com.playagames.shakesfidget -c LAUNCHER 1  → ✅ Unity (gra)!
+adb shell monkey -p com.example.yourgame -c LAUNCHER 1  → ✅ Unity (gra)!
 ```
 
 **Fix:** Nowa funkcja `_force_game_to_foreground()`:
 ```python
-adb.shell("monkey", "-p", "com.playagames.shakesfidget",
+adb.shell("monkey", "-p", "com.example.yourgame",
           "-c", "android.intent.category.LAUNCHER", "1")
 ```
 
