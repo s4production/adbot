@@ -4,6 +4,37 @@ Pełna historia wersji AdBota z opisem naprawionych bugów i dodanych funkcji. N
 
 ---
 
+## v12.16-BETA (2026-04-14) — TESTOWA, nie auto-update
+
+⚠️ **Ta wersja jest oznaczona jako prerelease** — auto-updater klientów NIE poda jej jako dostępnej. Klienci zostają na v12.15 stable. Pobierz ręcznie ze strony releases jeśli chcesz przetestować.
+
+### 🐛 Fix: Bot klikał w navbar koła (bell/quest/Goblin Gleeman)
+
+**Problem:** `dismiss_reward_overlay` szukał OK button zbyt głęboko (do 97-100% wysokości). Bell/quest/mail icons w dolnym navbarze są gold/yellow → matchowały OK template i yellow HSV mask → bot tapował → wychodził z koła do Goblin Gleeman / Quest screen.
+
+**Fix:**
+- `find_ok_button_template` y2: 0.97 → **0.88** (cap powyżej navbar)
+- `find_ok_button_yellow` y2: 1.00 → **0.88**
+- `dismiss_reward_overlay`: **USUNIĘTY blind fallback tap** — jeśli OK template + yellow nie znalezione, bot NIC NIE ROBI. Następny cykl `wait_for_tv` obsłuży stan.
+
+### 🐛 Fix: Google Ads video phase — bot klikał w app icon
+
+**Problem:** Gdy Google Ads gra video (np. Frost & Flame, Monopoly), close X jeszcze nie istnieje. UI dump ma tylko "Install" button + details link. Bot false-matchował app icon template `x11` score 0.89 i tapał pozycję → zatrzymywał video.
+
+**Fix:** Wykrycie Google Ads (`focus=gms.ads.AdActivity`) + obecność "Install" element → bot **CZEKA** (zero tapów) do 45s. Po 45s lub gdy w UI dump pojawi się "close"/"skip ad" → wchodzi w normalny flow.
+
+### 🔧 EXT_THRESHOLD 0.62 → 0.75
+
+External templates (x1-x11, arrowx2, strzalki) muszą teraz mieć score ≥ 0.75 (było 0.62). Eliminuje słabe false positives. Prawdziwe close buttons mają zwykle 0.85-0.95, więc przechodzą.
+
+### Download v12.16-BETA
+
+Tylko ręcznie: https://github.com/s4production/adbot/releases/tag/v12.16-beta
+
+Jeśli beta ma problemy — wróć do v12.15 z https://github.com/s4production/adbot/releases/tag/v12.15
+
+---
+
 ## v12.15 (2026-04-14) — DISCORD LINK UNIFICATION
 
 ### 🐛 Fix: Niespójne linki Discord w bocie
